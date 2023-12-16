@@ -45,7 +45,7 @@ def main():
         device='cuda',
         **vars(args)
     ), overwrite_args={'model_parallel_size': world_size} if world_size != 1 else {})
-    model = model.eval()
+    model = model.quantize(4).eval()
     from sat.mpu import get_model_parallel_world_size
     assert world_size == get_model_parallel_world_size(), "world size must equal to model parallel size for cli_demo!"
 
