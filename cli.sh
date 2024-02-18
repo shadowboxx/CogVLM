@@ -1,1 +1,4 @@
-python3 basic_demo/cli_demo_hf.py --from_pretrained /mnt/d/LLM/models/CogVLM/cogvlm-chat-v1.1
+python3 basic_demo/cli_demo_hf.py \
+    --from_pretrained /mnt/d/LLM/models/CogVLM/cogagent-chat-hf \
+    --local_tokenizer /mnt/d/LLM/models/lmsys/vicuna-7b-v1.5 \
+    --bf16 --quant 4
