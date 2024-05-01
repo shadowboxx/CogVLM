@@ -72,7 +72,7 @@ class ModelList(BaseModel):
     object: str = "list"
     data: List[ModelCard] = []
 
-
+MODEL_PATH
 class ImageUrl(BaseModel):
     url: str
 
@@ -366,9 +366,8 @@ gc.collect()
 torch.cuda.empty_cache()
 
 if __name__ == "__main__":
-    tokenizer = LlamaTokenizer.from_pretrained(
-        TOKENIZER_PATH,
-        trust_remote_code=True)
+    print(f'TOKENIZER_PATH: {TOKENIZER_PATH}')
+    tokenizer = LlamaTokenizer.from_pretrained(TOKENIZER_PATH, trust_remote_code=True)
 
     if torch.cuda.is_available() and torch.cuda.get_device_capability()[0] >= 8:
         torch_type = torch.bfloat16
@@ -377,6 +376,7 @@ if __name__ == "__main__":
 
     print("========Use torch type as:{} with device:{}========\n\n".format(torch_type, DEVICE))
 
+    print(f'MODEL_PATH: {MODEL_PATH}')
     if 'cuda' in DEVICE:
         if QUANT_ENABLED:
             model = AutoModelForCausalLM.from_pretrained(
